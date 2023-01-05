@@ -4,9 +4,28 @@
   padding: 0;
 }
 
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.row-container {
+  max-height: 50px;
+  display: flex;
+  margin: auto;
+}
+
 .cell {
-  border: 1px solid red;
   min-width: 50px;
   min-height: 50px;
-  display: inline-block;
+  border-right: 1px solid red;
+  border-bottom: 1px solid red;
+  transition: background-color 0.4s;
+}
+
+.cell:hover {
+  background-color: red;
+  transition: background-color 0s;
 }

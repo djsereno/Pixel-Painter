@@ -7,7 +7,7 @@ for (let row = 0; row < gridSize; row++) {
   rowContainer.setAttribute("class", "row-container");
   rowContainer.id = row;
   for (let col = 0; col < gridSize; col++) {
-    let cell = document.createElement("div.cell");
+    let cell = document.createElement("div");
     cell.setAttribute("class", "cell");
     cell.id = col;
     cell.innerText = ""
