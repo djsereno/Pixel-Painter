@@ -25,22 +25,26 @@ function buildGrid() {
   // Rebuild the grid
   const cellSize = Math.floor(gridDimension / gridSize);
   for (let row = 0; row < gridSize; row++) {
-    let rowContainer = document.createElement("div");
-    rowContainer.setAttribute("class", "row-container");
-    rowContainer.id = row;
+    // let rowContainer = document.createElement("div");
+    // rowContainer.setAttribute("class", "row-container");
+    // rowContainer.id = row;
     for (let col = 0; col < gridSize; col++) {
       let cell = document.createElement("div");
       cell.setAttribute("class", "cell");
       cell.id = col;
-      cell.style.minWidth = cellSize + "px";
-      cell.style.minHeight = cellSize + "px";
+      // cell.style.minWidth = cellSize + "px";
+      // cell.style.minHeight = cellSize + "px";
+
+      cell.style.gridColumnStart = col;
+      cell.style.gridRowStart = row;
+
       cell.addEventListener("mouseover", (event) => {
         if (mouseLeftDown) event.target.classList.add("activated");
       });
       cell.addEventListener("mousedown", (event) => {
         event.target.classList.add("activated");
       });
-      rowContainer.append(cell);
+      // rowContainer.append(cell);
     }
     gridContainer.append(rowContainer);
   }
