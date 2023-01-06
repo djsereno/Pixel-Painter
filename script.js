@@ -69,3 +69,30 @@ function showGrid() {
     child.classList.toggle("bordered")
   );
 }
+
+const darkModeButton = document.querySelector("#dark-mode");
+const lightModeButton = document.querySelector("#light-mode");
+let darkMode = false;
+let lightMode = false;
+darkModeButton.addEventListener("click", (e) => toggleShadeMode("dark"));
+lightModeButton.addEventListener("click", (e) => toggleShadeMode("light"));
+function toggleShadeMode(mode) {
+  switch (mode) {
+    case "dark":
+      darkMode = !darkMode;
+      darkModeButton.classList.toggle("active");
+      if (darkMode) {
+        lightMode = false;
+        lightModeButton.classList.remove("active");
+      }
+      break;
+    case "light":
+      lightMode = !lightMode;
+      lightModeButton.classList.toggle("active");
+      if (lightMode) {
+        darkMode = false;
+        darkModeButton.classList.remove("active");
+      }
+      break;
+  }
+}
