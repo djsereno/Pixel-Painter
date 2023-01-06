@@ -7,7 +7,6 @@ document.querySelector("body").append(newGridButton);
 let gridSize = 20;
 const gridContainer = document.createElement("div");
 gridContainer.setAttribute("class", "grid-container");
-const gridDimension = 800;
 buildGrid();
 
 let mouseLeftDown = false;
@@ -23,30 +22,20 @@ function buildGrid() {
   }
 
   // Rebuild the grid
-  const cellSize = Math.floor(gridDimension / gridSize);
+  gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+  gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
   for (let row = 0; row < gridSize; row++) {
-    // let rowContainer = document.createElement("div");
-    // rowContainer.setAttribute("class", "row-container");
-    // rowContainer.id = row;
     for (let col = 0; col < gridSize; col++) {
       let cell = document.createElement("div");
-      cell.setAttribute("class", "cell");
-      cell.id = col;
-      // cell.style.minWidth = cellSize + "px";
-      // cell.style.minHeight = cellSize + "px";
-
-      cell.style.gridColumnStart = col;
-      cell.style.gridRowStart = row;
-
+      cell.classList.add("cell");
       cell.addEventListener("mouseover", (event) => {
         if (mouseLeftDown) event.target.classList.add("activated");
       });
       cell.addEventListener("mousedown", (event) => {
         event.target.classList.add("activated");
       });
-      // rowContainer.append(cell);
+      gridContainer.append(cell);
     }
-    gridContainer.append(rowContainer);
   }
   document.querySelector("body").append(gridContainer);
 }

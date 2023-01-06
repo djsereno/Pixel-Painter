@@ -5,24 +5,10 @@
 }
 
 .grid-container {
-  /* display: flex; */
-
   display: grid;
-
-
-
-  flex-direction: column;
-  justify-content: center;
   margin: auto;
-
-
-
-}
-
-.row-container {
-  max-height: 50px;
-  display: flex;
-  margin: auto;
+  width: 600px;
+  height: 600px;
 }
 
 .cell {
@@ -31,12 +17,6 @@
   transition: background-color 0.4s;
   user-select: none;
   cursor: none;
-
-
-
-
-  grid-column-end: auto;
-  grid-row-end: auto;
 }
 
 .cell:hover {
