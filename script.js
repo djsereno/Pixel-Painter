@@ -7,11 +7,8 @@ document.querySelector("body").append(newGridButton);
 let gridSize = 20;
 const gridContainer = document.createElement("div");
 gridContainer.setAttribute("class", "grid-container");
+gridContainer.setAttribute("oncontextmenu", "return false;")
 buildGrid();
-
-let mouseLeftDown = false;
-document.body.onmousedown = () => (mouseLeftDown = true);
-document.body.onmouseup = () => (mouseLeftDown = false);
 
 function buildGrid() {
   // Empty the grid if it already exists
@@ -28,16 +25,20 @@ function buildGrid() {
     for (let col = 0; col < gridSize; col++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
-      cell.addEventListener("mouseover", (event) => {
-        if (mouseLeftDown) event.target.classList.add("activated");
-      });
-      cell.addEventListener("mousedown", (event) => {
-        event.target.classList.add("activated");
-      });
+      cell.addEventListener("mouseover", (event) => changeColor(event));
+      cell.addEventListener("mousedown", (event) => changeColor(event));
       gridContainer.append(cell);
     }
   }
   document.querySelector("body").append(gridContainer);
+}
+
+function changeColor(event) {
+  if (event.buttons === 1) {
+    event.target.classList.add("activated");
+  } else if (event.buttons === 2) {
+    event.target.classList.remove("activated");
+  }
 }
 
 function newGrid() {
