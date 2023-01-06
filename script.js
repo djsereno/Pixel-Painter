@@ -1,11 +1,11 @@
-const newGridButton = document.createElement("button");
-newGridButton.type = "button";
-newGridButton.innerText = "New Grid";
-newGridButton.addEventListener("click", newGrid);
-document.querySelector(".settings-container").append(newGridButton);
+// const newGridButton = document.createElement("button");
+// newGridButton.type = "button";
+// newGridButton.innerText = "New Grid";
+// newGridButton.addEventListener("click", newGrid);
+// document.querySelector(".settings-container").append(newGridButton);
 
 let gridSize = 20;
-const gridContainer = document.querySelector(".grid-container")
+const gridContainer = document.querySelector(".grid-container");
 buildGrid();
 
 function buildGrid() {
@@ -49,4 +49,12 @@ function newGrid() {
   } while (userInput < 16 || userInput > 100 || !userInput);
   gridSize = userInput;
   buildGrid();
+}
+
+const clearCanvasButton = document.querySelector("#clear-canvas");
+clearCanvasButton.addEventListener("click", clearCanvas);
+function clearCanvas() {
+  gridContainer.childNodes.forEach((child) =>
+    child.classList.remove("activated")
+  );
 }

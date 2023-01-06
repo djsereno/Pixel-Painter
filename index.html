@@ -18,21 +18,28 @@
 
     <div class="container">
       <div class="settings-container">
-        <div>
-          <button type="button" class="color-select">&#8203;</button>
-          <span>Pen Color</span>
+        <div class="options">
+          <h2>Color:</h2>
+          <div>
+            <button type="button" class="color-select">&#8203;</button>
+            <span>Pen Color</span>
+          </div>
+          <div>
+            <button type="button" class="color-select">&#8203;</button>
+            <span>Canvas Color</span>
+          </div>
+          <button type="button">Rainbow Mode</button>
         </div>
-        <div>
-          <button type="button" class="color-select">&#8203;</button>
-          <span>Canvas Color</span>
+        <div class="options">
+          <h2>Shading:</h2>
+          <button type="button">Darken Mode</button>
+          <button type="button">Lighten Mode</button>
         </div>
-        <button type="button">Rainbow Mode</button>
-        <button type="button">Darken Mode</button>
-        <button type="button">Lighten Mode</button>
-        <button type="button">Clear Canvas</button>
-        <button type="button">Show Gridlines</button>
-        <div>
-          <span class="slider-container">
+        <div class="options">
+          <h2>Canvas:</h2>
+          <button type="button" id="clear-canvas">Clear Canvas</button>
+          <button type="button">Show Gridlines</button>
+          <div class="slider-container">
             Grid Size:
             <span id="grid-size-label">16x16</span>
             <input
@@ -43,7 +50,7 @@
               class="slider"
               id="grid-size"
             />
-          </span>
+          </div>
         </div>
       </div>
       <div class="grid-container" oncontextmenu="return false"></div>
