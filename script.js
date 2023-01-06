@@ -1,13 +1,13 @@
-const newGridButton = document.createElement("button");
-newGridButton.type = "button";
-newGridButton.innerText = "New Grid";
-newGridButton.addEventListener("click", newGrid);
-document.querySelector("body").append(newGridButton);
+// const newGridButton = document.createElement("button");
+// newGridButton.type = "button";
+// newGridButton.innerText = "New Grid";
+// newGridButton.addEventListener("click", newGrid);
+// document.querySelector(".settings-container").append(newGridButton);
 
 let gridSize = 20;
-const gridContainer = document.createElement("div");
-gridContainer.setAttribute("class", "grid-container");
-gridContainer.setAttribute("oncontextmenu", "return false;")
+const gridContainer = document.querySelector(".grid-container")
+// gridContainer.setAttribute("class", "grid-container");
+// gridContainer.setAttribute("oncontextmenu", "return false;");
 buildGrid();
 
 function buildGrid() {
@@ -50,7 +50,6 @@ function newGrid() {
     );
     if (userInput === 0) return;
   } while (userInput < 16 || userInput > 100 || !userInput);
-
   gridSize = userInput;
   buildGrid();
 }

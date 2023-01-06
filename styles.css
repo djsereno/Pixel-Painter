@@ -1,17 +1,69 @@
+:root {
+  --color-light: #dedede;
+  --color-background: #30638e;
+  --color-buttons: #003d5b;
+  --color-button-border: #0097ae;
+  --color-button-active: #edae49;
+
+  --color-red: #d1495b;
+  --color-settings: #00798c;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: var(--color-background);
+  margin: auto;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 350px;
+  border-radius: 10px;
+  background-color: var(--color-settings);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: var(--color-light);
+  font-size: 16px;
+}
+
+slider-container,
+button {
+  margin: 6px;
+  padding: 10px;
+  background-color: var(--color-buttons);
+  color: var(--color-light);
+  border: 2px solid var(--color-button-border);
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+button:hover {
+  filter: brightness(115%);
+}
+
+.color-select {
+  width: 50%;
 }
 
 .grid-container {
   display: grid;
-  margin: auto;
+  /* margin: auto; */
   width: 600px;
   height: 600px;
-
-
-
+  background-color: var(--color-light);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .cell {
@@ -23,11 +75,11 @@
 }
 
 .cell:hover {
-  background-color: rgb(210, 210, 210);
+  background-color: rgb(166, 166, 166);
   transition: background-color 0s;
 }
 
 .activated {
-  background-color: red;
+  background-color: #d1495b;
   transition: background-color 0s;
 }
