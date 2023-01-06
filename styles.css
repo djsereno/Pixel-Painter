@@ -18,12 +18,19 @@
 }
 
 .cell {
-  border-right: 1px solid red;
-  border-bottom: 1px solid red;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   transition: background-color 0.4s;
+  user-select: none;
+  cursor: none;
 }
 
 .cell:hover {
+  background-color: rgb(210, 210, 210);
+  transition: background-color 0s;
+}
+
+.activated {
   background-color: red;
   transition: background-color 0s;
 }

@@ -10,6 +10,10 @@ gridContainer.setAttribute("class", "grid-container");
 const gridDimension = 800;
 buildGrid();
 
+let mouseLeftDown = false;
+document.body.onmousedown = () => (mouseLeftDown = true);
+document.body.onmouseup = () => (mouseLeftDown = false);
+
 function buildGrid() {
   // Empty the grid if it already exists
   let child = gridContainer.lastElementChild;
@@ -30,6 +34,12 @@ function buildGrid() {
       cell.id = col;
       cell.style.minWidth = cellSize + "px";
       cell.style.minHeight = cellSize + "px";
+      cell.addEventListener("mouseover", (event) => {
+        if (mouseLeftDown) event.target.classList.add("activated");
+      });
+      cell.addEventListener("mousedown", (event) => {
+        event.target.classList.add("activated");
+      });
       rowContainer.append(cell);
     }
     gridContainer.append(rowContainer);
