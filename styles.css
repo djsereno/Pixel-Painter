@@ -18,8 +18,6 @@
 }
 
 .cell {
-  min-width: 50px;
-  min-height: 50px;
   border-right: 1px solid red;
   border-bottom: 1px solid red;
   transition: background-color 0.4s;
