@@ -59,6 +59,10 @@ body {
   gap: 10px;
 }
 
+.options p{
+  font-size: .7em;
+}
+
 .settings-container h2 {
   font-size: 1.2em;
   font-weight: normal;
@@ -88,6 +92,14 @@ button:active {
   width: 50%;
 }
 
+#pen-color {
+  background-color: var(--color-red);
+}
+
+#canvas-color {
+  background-color: var(--color-light);
+}
+
 .grid-container {
   display: grid;
   width: 600px;
@@ -97,8 +109,6 @@ button:active {
 }
 
 .cell {
-  /* border-right: 1px solid grey;
-  border-bottom: 1px solid grey; */
   transition: background-color 0.4s;
   cursor: none;
 }
@@ -115,6 +125,5 @@ button:active {
 }
 
 .activated {
-  background-color: #d1495b;
   transition: background-color 0s;
 }

@@ -30,11 +30,18 @@ function buildGrid() {
   }
 }
 
+let penColor = "#d1495b";
+let canvasColor = "#dedede";
+const penColorButton = document.querySelector("#pen-color");
+const canvasColorButton = document.querySelector("#canvas-color");
+
 function changeColor(event) {
   if (event.buttons === 1) {
     event.target.classList.add("activated");
+    event.target.style.backgroundColor = penColor;
   } else if (event.buttons === 2) {
     event.target.classList.remove("activated");
+    event.target.removeAttribute("style");
   }
 }
 
@@ -54,9 +61,10 @@ function newGrid() {
 const clearCanvasButton = document.querySelector("#clear-canvas");
 clearCanvasButton.addEventListener("click", clearCanvas);
 function clearCanvas() {
-  gridContainer.childNodes.forEach((child) =>
-    child.classList.remove("activated")
-  );
+  gridContainer.childNodes.forEach((child) => {
+    child.classList.remove("activated");
+    child.removeAttribute("style");
+  });
 }
 
 const showGridButton = document.querySelector("#show-grid");
