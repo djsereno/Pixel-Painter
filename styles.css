@@ -24,13 +24,29 @@ body {
 .title {
   display: flex;
   justify-content: center;
+  margin: 50px auto;
+}
+
+.title h1 {
+  font-size: 64px;
+  color: var(--color-light);
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .settings-container {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  width: 350px;
+  gap: 10px;
+  padding: 20px;
+  width: 300px;
+  height: 100%;
   border-radius: 10px;
   background-color: var(--color-settings);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -40,7 +56,6 @@ body {
 
 slider-container,
 button {
-  margin: 6px;
   padding: 10px;
   background-color: var(--color-buttons);
   color: var(--color-light);

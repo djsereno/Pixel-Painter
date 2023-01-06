@@ -1,13 +1,11 @@
-// const newGridButton = document.createElement("button");
-// newGridButton.type = "button";
-// newGridButton.innerText = "New Grid";
-// newGridButton.addEventListener("click", newGrid);
-// document.querySelector(".settings-container").append(newGridButton);
+const newGridButton = document.createElement("button");
+newGridButton.type = "button";
+newGridButton.innerText = "New Grid";
+newGridButton.addEventListener("click", newGrid);
+document.querySelector(".settings-container").append(newGridButton);
 
 let gridSize = 20;
 const gridContainer = document.querySelector(".grid-container")
-// gridContainer.setAttribute("class", "grid-container");
-// gridContainer.setAttribute("oncontextmenu", "return false;");
 buildGrid();
 
 function buildGrid() {
@@ -30,7 +28,6 @@ function buildGrid() {
       gridContainer.append(cell);
     }
   }
-  document.querySelector("body").append(gridContainer);
 }
 
 function changeColor(event) {

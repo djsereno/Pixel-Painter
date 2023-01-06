@@ -15,35 +15,38 @@
     <div class="title">
       <h1>Etch-a-Sketch</h1>
     </div>
-    <div class="settings-container">
-      <div>
-        <button type="button" class="color-select">&#8203;</button>
-        <span>Pen Color</span>
+
+    <div class="container">
+      <div class="settings-container">
+        <div>
+          <button type="button" class="color-select">&#8203;</button>
+          <span>Pen Color</span>
+        </div>
+        <div>
+          <button type="button" class="color-select">&#8203;</button>
+          <span>Canvas Color</span>
+        </div>
+        <button type="button">Rainbow Mode</button>
+        <button type="button">Darken Mode</button>
+        <button type="button">Lighten Mode</button>
+        <button type="button">Clear Canvas</button>
+        <button type="button">Show Gridlines</button>
+        <div>
+          <span class="slider-container">
+            Grid Size:
+            <span id="grid-size-label">16x16</span>
+            <input
+              type="range"
+              min="16"
+              max="100"
+              value="50"
+              class="slider"
+              id="grid-size"
+            />
+          </span>
+        </div>
       </div>
-      <div>
-        <button type="button" class="color-select">&#8203;</button>
-        <span>Canvas Color</span>
-      </div>
-      <button type="button">Rainbow Mode</button>
-      <button type="button">Darken Mode</button>
-      <button type="button">Lighten Mode</button>
-      <button type="button">Clear Canvas</button>
-      <button type="button">Show Gridlines</button>
-      <div>
-        <span class="slider-container">
-          Grid Size:
-          <span id="grid-size-label">16x16</span>
-          <input
-            type="range"
-            min="16"
-            max="100"
-            value="50"
-            class="slider"
-            id="grid-size"
-          />
-        </span>
-      </div>
+      <div class="grid-container" oncontextmenu="return false"></div>
     </div>
-    <div class="grid-container" oncontextmenu="return false"></div>
   </body>
 </html>
