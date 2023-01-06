@@ -58,3 +58,14 @@ function clearCanvas() {
     child.classList.remove("activated")
   );
 }
+
+const showGridButton = document.querySelector("#show-grid");
+let gridsOn = false;
+showGridButton.addEventListener("click", showGrid);
+function showGrid() {
+  gridsOn = !gridsOn;
+  showGridButton.classList.toggle("active");
+  gridContainer.childNodes.forEach((child) =>
+    child.classList.toggle("bordered")
+  );
+}
