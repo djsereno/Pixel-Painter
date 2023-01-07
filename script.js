@@ -11,12 +11,18 @@ canvasColorButton.addEventListener("change", function (event) {
   gridContainer.style.backgroundColor = canvasColor;
 });
 
-let gridSize = 20;
+const gridSizeSlider = document.querySelector("#grid-size");
+const gridSizeLabel = document.querySelector("#grid-size-label");
+gridSizeSlider.addEventListener("mousemove", (e) =>
+  updateSizeLabel(e.target.value)
+);
+gridSizeSlider.addEventListener("change", (e) => buildGrid(e.target.value, gridsOn));
+
 const gridContainer = document.querySelector(".grid-container");
 gridContainer.style.backgroundColor = canvasColor;
-buildGrid();
+buildGrid(gridSizeSlider.value);
 
-function buildGrid() {
+function buildGrid(gridSize, bordered = false) {
   // Empty the grid if it already exists
   let child = gridContainer.lastElementChild;
   while (child) {
@@ -31,11 +37,16 @@ function buildGrid() {
     for (let col = 0; col < gridSize; col++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
+      if (bordered) cell.classList.add("bordered");
       cell.addEventListener("mouseover", (event) => changeColor(event));
       cell.addEventListener("mousedown", (event) => changeColor(event));
       gridContainer.append(cell);
     }
   }
+}
+
+function updateSizeLabel(gridSize) {
+  gridSizeLabel.innerText = `${gridSize}x${gridSize}`;
 }
 
 const shadeIncrement = 10;
@@ -67,19 +78,6 @@ function changeColor(event) {
     event.target.classList.remove("activated");
     event.target.removeAttribute("style");
   }
-}
-
-function newGrid() {
-  let userInput;
-  do {
-    userInput = +prompt(
-      "Enter the number of squares per side of the new grid (min = 16, max = 100)",
-      gridSize
-    );
-    if (userInput === 0) return;
-  } while (userInput < 16 || userInput > 100 || !userInput);
-  gridSize = userInput;
-  buildGrid();
 }
 
 const rainbowModeButton = document.querySelector("#rainbow-mode");

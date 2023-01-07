@@ -108,7 +108,7 @@ button:active {
 }
 
 .cell:hover {
-  background-color: rgb(166, 166, 166);
+  background-color: rgb(166, 166, 166) !important;
   transition: background-color 0s;
 }
 
