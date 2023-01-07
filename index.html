@@ -21,7 +21,7 @@
         <div class="options">
           <h2>Color:</h2>
           <p>Left-Click = Draw, Right-Click = Erase</p>
-          <div>
+          <div class="color-select-container">
             <input
               type="color"
               class="color-select"
@@ -30,7 +30,7 @@
             />
             <span>Pen Color</span>
           </div>
-          <div>
+          <div class="color-select-container">
             <input
               type="color"
               class="color-select"
@@ -51,16 +51,18 @@
           <button type="button" id="clear-canvas">Clear Canvas</button>
           <button type="button" id="show-grid">Show Gridlines</button>
           <div class="slider-container">
-            Grid Size:
-            <span id="grid-size-label">20x20</span>
-            <input
-              type="range"
-              min="16"
-              max="100"
-              value="20"
-              class="slider"
-              id="grid-size"
-            />
+            <span>Grid Size:</span>
+            <div class="slider-and-label">
+              <span id="grid-size-label">20x20</span>
+              <input
+                type="range"
+                min="16"
+                max="100"
+                value="20"
+                class="slider"
+                id="grid-size"
+              />
+            </div>
           </div>
         </div>
       </div>

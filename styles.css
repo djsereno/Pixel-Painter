@@ -59,13 +59,26 @@ body {
   gap: 10px;
 }
 
+.settings-container h2 {
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
 .options p {
   font-size: 0.7em;
 }
 
-.settings-container h2 {
-  font-size: 1.2em;
-  font-weight: normal;
+.color-select-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.color-select {
+  width: 50%;
+  height: 42px;
+  border: 2px solid var(--color-button-border);
+  border-radius: 10px;
 }
 
 button,
@@ -76,23 +89,35 @@ slider-container {
   border: 2px solid var(--color-button-border);
   border-radius: 10px;
   font-size: 1em;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 button:hover {
   filter: brightness(115%);
+  transform: scale(1.05);
+  transition: transform 0.1s ease;
 }
 
 button.active,
 button:active {
   background-color: var(--color-button-active);
   color: var(--color-buttons);
+  box-shadow: rgba(50, 50, 93, 0.25) 3px 3px 6px 0px inset,
+    rgba(0, 0, 0, 0.3) -3px -3px 6px 1px inset;
 }
 
-.color-select {
-  width: 50%;
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   height: 42px;
-  border: 2px solid var(--color-button-border);
-  border-radius: 10px;
+}
+
+.slider-and-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .grid-container {
@@ -108,7 +133,8 @@ button:active {
 }
 
 .cell:hover {
-  background-color: rgb(166, 166, 166) !important;
+  background-color: rgb(198, 198, 198) !important;
+  border: 2px solid var(--color-button-active);
   transition: background-color 0s;
 }
 
@@ -118,6 +144,35 @@ button:active {
   margin-left: -1px;
 }
 
-.activated {
-  transition: background-color 0s;
+input[type="range"] {
+  height: 25px;
+  -webkit-appearance: none;
+  width: 100%;
+  background-color: transparent;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000;
+  background: var(--color-buttons);
+  border-radius: 3px;
+  border: 0px solid #000000;
+}
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 2px solid var(--color-button-border);
+  height: 18px;
+  width: 18px;
+  border-radius: 25px;
+  background: var(--color-buttons);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: var(--color-buttons);
 }
