@@ -59,8 +59,8 @@ body {
   gap: 10px;
 }
 
-.options p{
-  font-size: .7em;
+.options p {
+  font-size: 0.7em;
 }
 
 .settings-container h2 {
@@ -68,8 +68,8 @@ body {
   font-weight: normal;
 }
 
-slider-container,
-button {
+button,
+slider-container {
   padding: 10px;
   background-color: var(--color-buttons);
   color: var(--color-light);
@@ -90,21 +90,16 @@ button:active {
 
 .color-select {
   width: 50%;
-}
-
-#pen-color {
-  background-color: var(--color-red);
-}
-
-#canvas-color {
-  background-color: var(--color-light);
+  height: 42px;
+  border: 2px solid var(--color-button-border);
+  border-radius: 10px;
 }
 
 .grid-container {
   display: grid;
   width: 600px;
   height: 600px;
-  background-color: var(--color-light);
+  /* background-color: black; */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 

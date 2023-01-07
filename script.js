@@ -1,11 +1,18 @@
-// const newGridButton = document.createElement("button");
-// newGridButton.type = "button";
-// newGridButton.innerText = "New Grid";
-// newGridButton.addEventListener("click", newGrid);
-// document.querySelector(".settings-container").append(newGridButton);
+const penColorButton = document.querySelector("#pen-color");
+const canvasColorButton = document.querySelector("#canvas-color");
+let penColor = penColorButton.value;
+let canvasColor = canvasColorButton.value;
+penColorButton.addEventListener("change", function (event) {
+  penColor = event.target.value;
+});
+canvasColorButton.addEventListener("change", function (event) {
+  canvasColor = event.target.value;
+  gridContainer.style.backgroundColor = canvasColor;
+});
 
 let gridSize = 20;
 const gridContainer = document.querySelector(".grid-container");
+gridContainer.style.backgroundColor = canvasColor;
 buildGrid();
 
 function buildGrid() {
@@ -29,11 +36,6 @@ function buildGrid() {
     }
   }
 }
-
-let penColor = "#d1495b";
-let canvasColor = "#dedede";
-const penColorButton = document.querySelector("#pen-color");
-const canvasColorButton = document.querySelector("#canvas-color");
 
 function changeColor(event) {
   if (event.buttons === 1) {
