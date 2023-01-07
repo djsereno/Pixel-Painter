@@ -38,13 +38,29 @@ function buildGrid() {
   }
 }
 
+const shadeIncrement = 10;
 function changeColor(event) {
   if (event.buttons === 1) {
-    event.target.classList.add("activated");
-    if (rainbowMode) {
+    let isActivated = event.target.classList.contains("activated");
+
+    if (darkMode || lightMode) {
+      if (isActivated) {
+        let brightness = /[0-9]+/.exec(event.target.style.filter);
+        brightness ? (brightness = +brightness[0]) : (brightness = 100);
+        let newBrightness;
+        darkMode
+          ? (newBrightness = Math.max(0, brightness - shadeIncrement))
+          : (newBrightness = Math.min(500, brightness + shadeIncrement));
+        event.target.style.filter = `brightness(${newBrightness}%)`;
+      }
+    } else if (rainbowMode) {
+      event.target.classList.add("activated");
+      event.target.style.removeProperty("filter");
       event.target.style.backgroundColor = rainbow[rainbowColor];
       rainbowColor = (rainbowColor + 1) % rainbow.length;
     } else {
+      event.target.classList.add("activated");
+      event.target.style.removeProperty("filter");
       event.target.style.backgroundColor = penColor;
     }
   } else if (event.buttons === 2) {

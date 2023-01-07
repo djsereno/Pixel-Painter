@@ -99,12 +99,11 @@ button:active {
   display: grid;
   width: 600px;
   height: 600px;
-  /* background-color: black; */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .cell {
-  transition: background-color 0.4s;
+  transition: background-color 0.4s ease, filter 0.4s ease;
   cursor: none;
 }
 
