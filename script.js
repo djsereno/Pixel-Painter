@@ -3,6 +3,7 @@ const canvasColorButton = document.querySelector("#canvas-color");
 let penColor = penColorButton.value;
 let canvasColor = canvasColorButton.value;
 penColorButton.addEventListener("change", function (event) {
+  if (rainbowMode) toggleRainbowMode();
   penColor = event.target.value;
 });
 canvasColorButton.addEventListener("change", function (event) {
@@ -40,7 +41,12 @@ function buildGrid() {
 function changeColor(event) {
   if (event.buttons === 1) {
     event.target.classList.add("activated");
-    event.target.style.backgroundColor = penColor;
+    if (rainbowMode) {
+      event.target.style.backgroundColor = rainbow[rainbowColor];
+      rainbowColor = (rainbowColor + 1) % rainbow.length;
+    } else {
+      event.target.style.backgroundColor = penColor;
+    }
   } else if (event.buttons === 2) {
     event.target.classList.remove("activated");
     event.target.removeAttribute("style");
@@ -60,24 +66,13 @@ function newGrid() {
   buildGrid();
 }
 
-const clearCanvasButton = document.querySelector("#clear-canvas");
-clearCanvasButton.addEventListener("click", clearCanvas);
-function clearCanvas() {
-  gridContainer.childNodes.forEach((child) => {
-    child.classList.remove("activated");
-    child.removeAttribute("style");
-  });
-}
-
-const showGridButton = document.querySelector("#show-grid");
-let gridsOn = false;
-showGridButton.addEventListener("click", showGrid);
-function showGrid() {
-  gridsOn = !gridsOn;
-  showGridButton.classList.toggle("active");
-  gridContainer.childNodes.forEach((child) =>
-    child.classList.toggle("bordered")
-  );
+const rainbowModeButton = document.querySelector("#rainbow-mode");
+let rainbowMode = false;
+let rainbowColor = 0;
+rainbowModeButton.addEventListener("click", toggleRainbowMode);
+function toggleRainbowMode() {
+  rainbowMode = !rainbowMode;
+  rainbowModeButton.classList.toggle("active");
 }
 
 const darkModeButton = document.querySelector("#dark-mode");
@@ -106,3 +101,46 @@ function toggleShadeMode(mode) {
       break;
   }
 }
+
+const clearCanvasButton = document.querySelector("#clear-canvas");
+clearCanvasButton.addEventListener("click", clearCanvas);
+function clearCanvas() {
+  gridContainer.childNodes.forEach((child) => {
+    child.classList.remove("activated");
+    child.removeAttribute("style");
+  });
+}
+
+const showGridButton = document.querySelector("#show-grid");
+let gridsOn = false;
+showGridButton.addEventListener("click", showGrid);
+function showGrid() {
+  gridsOn = !gridsOn;
+  showGridButton.classList.toggle("active");
+  gridContainer.childNodes.forEach((child) =>
+    child.classList.toggle("bordered")
+  );
+}
+
+let rainbow = [
+  "#80F31F",
+  "#A5DE0B",
+  "#C7C101",
+  "#E39E03",
+  "#F6780F",
+  "#FE5326",
+  "#FB3244",
+  "#ED1868",
+  "#D5078E",
+  "#B601B3",
+  "#9106D3",
+  "#6B16EC",
+  "#472FFA",
+  "#2850FE",
+  "#1175F7",
+  "#039BE5",
+  "#01BECA",
+  "#0ADCA8",
+  "#1DF283",
+  "#3AFD5D",
+];
