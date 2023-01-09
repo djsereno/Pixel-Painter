@@ -258,5 +258,17 @@ footer a:active {
 }
 
 footer i {
-  height: 70%;
+  font-size: 1.6em;
+}
+
+footer a.circled i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 0.8em;
+  background-color: var(--color-light);
+  color: var(--color-buttons);
+  font-size: 1em;
 }
