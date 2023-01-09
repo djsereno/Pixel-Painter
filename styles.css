@@ -62,6 +62,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-size: 1.1em;
 }
 
 .settings-container h2 {
