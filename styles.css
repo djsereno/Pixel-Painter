@@ -261,6 +261,10 @@ footer i {
   font-size: 1.6em;
 }
 
+footer a.icon:hover {
+  transform: scale(1.1);
+}
+
 footer a.circled i {
   display: flex;
   justify-content: center;
