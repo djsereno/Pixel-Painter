@@ -22,7 +22,7 @@
   </p>
 </div>
 
-### Built With
+## Built With
 
 - Javascript
 - HTML/CSS
