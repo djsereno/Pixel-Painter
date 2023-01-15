@@ -1,12 +1,3 @@
-let penColor = penColorButton.value;
-let canvasColor = canvasColorButton.value;
-let rainbowMode = false;
-let rainbowColor = 0;
-let darkMode = false;
-let lightMode = false;
-let gridsOn = false;
-const shadeIncrement = 10;
-
 const penColorButton = document.querySelector("#pen-color");
 const canvasColorButton = document.querySelector("#canvas-color");
 const rainbowModeButton = document.querySelector("#rainbow-mode");
@@ -17,6 +8,15 @@ const showGridButton = document.querySelector("#show-grid");
 const gridSizeSlider = document.querySelector("#grid-size");
 const gridSizeLabel = document.querySelector("#grid-size-label");
 const gridContainer = document.querySelector(".grid-container");
+
+let penColor = penColorButton.value;
+let canvasColor = canvasColorButton.value;
+let rainbowMode = false;
+let rainbowColor = 0;
+let darkMode = false;
+let lightMode = false;
+let gridsOn = false;
+const shadeIncrement = 10;
 
 penColorButton.addEventListener("change", (e) => handlePenChange(e.target.value));
 canvasColorButton.addEventListener("change", (e) => handleCanvasChange(e.target.value));
