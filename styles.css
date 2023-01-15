@@ -258,15 +258,14 @@ footer .right-container {
   grid-column: 3;
   display: flex;
   justify-content: end;
-  align-items:flex-end;
+  align-items: flex-end;
   padding: 5px;
   font-size: small;
-  color: rgba(255, 255, 255, .3);
-
+  color: rgba(255, 255, 255, 0.3);
 }
 
 footer .right-container a {
-  color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 footer a,

@@ -1,36 +1,75 @@
 const penColorButton = document.querySelector("#pen-color");
 const canvasColorButton = document.querySelector("#canvas-color");
-let penColor = penColorButton.value;
-let canvasColor = canvasColorButton.value;
-penColorButton.addEventListener("change", function (event) {
-  if (rainbowMode) toggleRainbowMode();
-  penColor = event.target.value;
-});
-canvasColorButton.addEventListener("change", function (event) {
-  canvasColor = event.target.value;
-  gridContainer.style.backgroundColor = canvasColor;
-});
-
+const rainbowModeButton = document.querySelector("#rainbow-mode");
+const darkModeButton = document.querySelector("#dark-mode");
+const lightModeButton = document.querySelector("#light-mode");
+const clearCanvasButton = document.querySelector("#clear-canvas");
+const showGridButton = document.querySelector("#show-grid");
 const gridSizeSlider = document.querySelector("#grid-size");
 const gridSizeLabel = document.querySelector("#grid-size-label");
-gridSizeSlider.addEventListener("mousemove", (e) =>
-  updateSizeLabel(e.target.value)
-);
+const gridContainer = document.querySelector(".grid-container");
+
+const shadeIncrement = 10;
+let penColor = penColorButton.value;
+let canvasColor = canvasColorButton.value;
+let rainbowMode = false;
+let rainbowColor = 0;
+let darkMode = false;
+let lightMode = false;
+let gridsOn = false;
+
+penColorButton.addEventListener("change", (e) => handlePenChange(e.target.value));
+canvasColorButton.addEventListener("change", (e) => handleCanvasChange(e.target.value));
+rainbowModeButton.addEventListener("click", toggleRainbowMode);
+darkModeButton.addEventListener("click", () => toggleShadeMode("dark"));
+lightModeButton.addEventListener("click", () => toggleShadeMode("light"));
+clearCanvasButton.addEventListener("click", clearCanvas);
+showGridButton.addEventListener("click", showGrid);
+gridSizeSlider.addEventListener("mousemove", (e) => updateSizeLabel(e.target.value));
 gridSizeSlider.addEventListener("change", (e) => buildGrid(e.target.value, gridsOn));
 
-const gridContainer = document.querySelector(".grid-container");
 gridContainer.style.backgroundColor = canvasColor;
 buildGrid(gridSizeSlider.value);
 
+function handlePenChange(color) {
+  if (rainbowMode) toggleRainbowMode();
+  penColor = color;
+}
+
+function handleCanvasChange(color) {
+  canvasColor = color;
+  gridContainer.style.backgroundColor = canvasColor;
+}
+
+function toggleRainbowMode() {
+  rainbowMode = !rainbowMode;
+  rainbowModeButton.classList.toggle("active");
+}
+
+function clearCanvas() {
+  gridContainer.childNodes.forEach((child) => {
+    child.classList.remove("activated");
+    child.removeAttribute("style");
+  });
+}
+
+function showGrid() {
+  gridsOn = !gridsOn;
+  showGridButton.classList.toggle("active");
+  gridContainer.childNodes.forEach((child) => child.classList.toggle("bordered"));
+}
+
+function updateSizeLabel(gridSize) {
+  gridSizeLabel.innerText = `${gridSize}x${gridSize}`;
+}
+
 function buildGrid(gridSize, bordered = false) {
-  // Empty the grid if it already exists
   let child = gridContainer.lastElementChild;
   while (child) {
     gridContainer.removeChild(child);
     child = gridContainer.lastElementChild;
   }
 
-  // Rebuild the grid
   gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
   gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
   for (let row = 0; row < gridSize; row++) {
@@ -45,11 +84,6 @@ function buildGrid(gridSize, bordered = false) {
   }
 }
 
-function updateSizeLabel(gridSize) {
-  gridSizeLabel.innerText = `${gridSize}x${gridSize}`;
-}
-
-const shadeIncrement = 10;
 function changeColor(event) {
   if (event.buttons === 1) {
     let isActivated = event.target.classList.contains("activated");
@@ -67,8 +101,8 @@ function changeColor(event) {
     } else if (rainbowMode) {
       event.target.classList.add("activated");
       event.target.style.removeProperty("filter");
-      event.target.style.backgroundColor = rainbow[rainbowColor];
-      rainbowColor = (rainbowColor + 1) % rainbow.length;
+      event.target.style.backgroundColor = RAINBOW[rainbowColor];
+      rainbowColor = (rainbowColor + 1) % RAINBOW.length;
     } else {
       event.target.classList.add("activated");
       event.target.style.removeProperty("filter");
@@ -80,21 +114,6 @@ function changeColor(event) {
   }
 }
 
-const rainbowModeButton = document.querySelector("#rainbow-mode");
-let rainbowMode = false;
-let rainbowColor = 0;
-rainbowModeButton.addEventListener("click", toggleRainbowMode);
-function toggleRainbowMode() {
-  rainbowMode = !rainbowMode;
-  rainbowModeButton.classList.toggle("active");
-}
-
-const darkModeButton = document.querySelector("#dark-mode");
-const lightModeButton = document.querySelector("#light-mode");
-let darkMode = false;
-let lightMode = false;
-darkModeButton.addEventListener("click", (e) => toggleShadeMode("dark"));
-lightModeButton.addEventListener("click", (e) => toggleShadeMode("light"));
 function toggleShadeMode(mode) {
   switch (mode) {
     case "dark":
@@ -116,27 +135,7 @@ function toggleShadeMode(mode) {
   }
 }
 
-const clearCanvasButton = document.querySelector("#clear-canvas");
-clearCanvasButton.addEventListener("click", clearCanvas);
-function clearCanvas() {
-  gridContainer.childNodes.forEach((child) => {
-    child.classList.remove("activated");
-    child.removeAttribute("style");
-  });
-}
-
-const showGridButton = document.querySelector("#show-grid");
-let gridsOn = false;
-showGridButton.addEventListener("click", showGrid);
-function showGrid() {
-  gridsOn = !gridsOn;
-  showGridButton.classList.toggle("active");
-  gridContainer.childNodes.forEach((child) =>
-    child.classList.toggle("bordered")
-  );
-}
-
-let rainbow = [
+const RAINBOW = [
   "#80F31F",
   "#A5DE0B",
   "#C7C101",
